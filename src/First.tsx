@@ -1,3 +1,5 @@
+import jdata from "./data.json"
+
 function First()
 {
     //variable
@@ -13,9 +15,11 @@ type ObjectType={
     age?:number
 }
 //array of objects
-let arrObj:ObjectType[]=[
-    {name:"First",age:20},
-    {name:"Second"}]
+// let arrObj:ObjectType[]=[
+//     {name:"First",age:20},
+//     {name:"Second"}]
+
+//let arrObj:ObjectType[]=jdata;
 
 let obj:ObjectType={name:"First",age:20};
 
@@ -32,7 +36,7 @@ let obj:ObjectType={name:"First",age:20};
         }
         <p>Your name is :{obj.name} - {obj.age}</p>
         {
-            arrObj.map((item)=>{
+            jdata.map((item)=>{
                 return <p>{item.name} -{item.age}</p>
 
             })
