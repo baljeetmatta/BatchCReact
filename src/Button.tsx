@@ -1,6 +1,8 @@
+
+
 type ButtonProps={
     value:string,
-    click:Function
+    click:(event:React.MouseEvent<HTMLButtonElement>,id:number)=>void
 }
 function clickHandler()
 {
@@ -10,7 +12,7 @@ function Button(props:ButtonProps){
 
     return (
         <>
-        <button onClick={props.click}>{props.value}</button>
+        <button onClick={(event)=>{props.click(event,1)}}>{props.value}</button>
         </>
     )
 }

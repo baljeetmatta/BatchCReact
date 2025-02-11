@@ -1,25 +1,15 @@
 import './App.css';
-import Button from './Button';
-const clickHandlerSend=((e:MouseEvent)=>{
-  let target=e.target as HTMLButtonElement;
-
-  alert("Clicked on send button"+target.innerText)
-});
-
-const clickHandlerClick=()=>{
-  alert("Clicked on click button")
-}
-
-
+//import Controls from './Controls';
+import GreetClass from './GreetClass';
+import Login from './Login';
+// 
 const App=()=>{
-
   return (
     <>
-    App Component
-    <Button value="Send" click={clickHandlerSend}/>
-    <Button value="Click" click={clickHandlerClick}/>
-
-
+    {/* <Controls/> */}
+    {/* <GreetClass name="Code"/> */}
+    <Login/>
+    
     </>
   )
 }
