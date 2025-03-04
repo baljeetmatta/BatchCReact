@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 type UserType={
     name:string,
     email:string
 }
 const Login = () => {
+    const location=useLocation();
     const [isLoggedIn, setLogin] = useState(false);
    // const [user,setUser]=useState<UserType>({} as UserType);
    const [user,setUser]=useState<UserType |null>(null);
@@ -20,6 +22,7 @@ const Login = () => {
     }
     return (
         <>
+    {location.state?.data}
         <div>{user?.name} {user?.email}</div>
             <div>{isLoggedIn ? 'Logged in' : 'Logged out'}</div>
             <button onClick={loginHandler}>Login</button>
