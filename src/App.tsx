@@ -40,6 +40,7 @@ import Home from "./components/Home"
 import About from "./components/About"
 import Jobs, { fetchJobs } from "./components/Jobs"
 import JobDetails, { fetchJobDetails } from "./components/JobDetails"
+import Posts from "./components/Posts"
 
 //     </Routes> */}
 
@@ -113,6 +114,9 @@ const routes=createBrowserRouter([
     element:<JobDetails/>,
     loader:fetchJobDetails
 
+  },{
+    path:"/posts",
+    element:<Posts/>
   }
 ])
 function App()
