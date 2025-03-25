@@ -7,13 +7,14 @@ import { BUG_RESOLVED, store } from "./BugStore";
 //const BugList=(props:BugProps)=>{
     const BugList=()=>{
         const [bugs,setBugs]=useState<BugType[]>([]);
-        // useEffect(()=>{
-        //     setBugs(store.getState());
-        // },[])
-        store.subscribe(()=>{
+        useEffect(()=>{
+            store.subscribe(()=>{
 
-            setBugs(store.getState());
-        })
+                setBugs(store.getState().bugs);
+            })
+            setBugs(store.getState().bugs);
+        },[])
+        
         
         const resolveHandler=(id:number)=>{
             store.dispatch({

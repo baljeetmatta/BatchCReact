@@ -10,28 +10,32 @@ type ActionType={
 export const BUG_ADDED="bugAdded";
 export const BUG_RESOLVED="bugResolved";
 let lastid=1;
-const BugReducer=(state:BugType[]=[],action:ActionType)=>{
+type StateType={
+    bugs:BugType[]
+}
+const BugReducer=(state:StateType={bugs:[]},action:ActionType)=>{
 
 
     if(action.type==BUG_ADDED)
     {
-        const existingBugs=[...state];
-        existingBugs.push({
+        const bugs=[...state.bugs];
+        bugs.push({
             id:lastid++,
             description:action.payload.description,
             resolved:false
         })
-        return existingBugs;
+        return {...state,bugs};
 
     }
     if(action.type==BUG_RESOLVED)
         {
-           const existingBugs=state.map((item)=>{
+            const bugs=[...state.bugs];
+           const existingBugs=bugs.map((item)=>{
             if(item.id==action.payload.id)
                 item.resolved=true;
             return item;
            })
-            return existingBugs;
+            return {...state,bugs:existingBugs};
     
         }
 
@@ -39,4 +43,26 @@ const BugReducer=(state:BugType[]=[],action:ActionType)=>{
 
 
 }
-export const store=createStore(BugReducer);
+import { persistStore,persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"
+const config={
+    key:'bugroot',
+    storage
+}
+const pReducer=persistReducer(config,BugReducer);
+/*
+[
+    {
+    }
+]
+{
+    bugs:[
+        {
+        }
+    ]
+}
+
+*/
+
+export const store=createStore(pReducer);
+export const pStore=persistStore(store);
