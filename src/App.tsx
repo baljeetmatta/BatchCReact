@@ -144,6 +144,7 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 // }
 // export default App;
 import { pStore } from "./components/BugStore";
+import ChatApp from "./components/ChatApp";
 function App() {
   const [name,setName]=useState<string|undefined>(undefined);
 
@@ -159,10 +160,12 @@ function App() {
     <li><NavLink to="/about">About</NavLink></li>
     <li><NavLink to="/contact">Contact</NavLink></li>
     <li><NavLink to="/bugs">Bugs</NavLink></li>
+    <li><NavLink to="/chats">Chats</NavLink></li>
   </ul>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/bugs" element={<Bugs/>}/>
+        <Route path="/chats" element={<ChatApp/>}/>
         <Route path="/" element={<PrivateRoute><Outlet/></PrivateRoute>}>
         <Route path="about" element={<About/>}/>
         <Route path="contact" element={<Contact/>}/>
