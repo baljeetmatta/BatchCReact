@@ -144,7 +144,10 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 // }
 // export default App;
 import { pStore } from "./components/BugStore";
-import ChatApp from "./components/ChatApp";
+//import ChatApp from "./components/ChatApp";
+import { lazy } from "react";
+const ChatApp =lazy(()=>import("./components/ChatApp"));
+
 function App() {
   const [name,setName]=useState<string|undefined>(undefined);
 
